@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Company | Contact Us</title>
+    <!-- Adjusted the link to stylesheet by adding ../ to match the same stylesheet as the homepage -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="contact-page">
+    <!-- Header & Navigation -->
+    <header>
+      <nav class="navbar" aria-label="Main Navigation">
+        <div class="logo">
+          <!-- Going up one folder before accessing assets/images/ -->
+          <a href="../index.html">
+            <img src="../assets/images/logo.png" alt="Your Company Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services/index.html">Services</a></li>
+          <li><a href="../ai-services/index.html">AI Services</a></li>
+          <li><a href="../about/index.html">About Us</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="index.html" class="active">Contact Us</a></li>
+        </ul>
+        <div class="menu-icon" aria-label="Menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times" style="display: none"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>
+          We'd love to hear from you! Please fill out the form below, and we'll
+          get in touch soon.
+        </p>
+
+        <!-- Messages -->
+        <div id="form-messages"></div>
+
+        <!-- Contact Form -->
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name <span class="required">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your Name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Your Email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="company"
+              >Company Name <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              id="company"
+              name="company"
+              required
+              placeholder="Your Company Name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="Your Message"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>© 2024 Drinks by Neat. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../services/index.html">Services</a></li>
+          <li><a href="../ai-services/index.html">AI Services</a></li>
+          <li><a href="../about/index.html">About Us</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+        </ul>
+        <div class="social-links">
+          <a
+            href="https://facebook.com"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://instagram.com"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://linkedin.com"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a
+            href="https://twitter.com"
+            aria-label="Twitter"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fab fa-twitter"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript for Form -->
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formMessages = document.getElementById("form-messages");
+          formMessages.innerHTML = "";
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const company = document.getElementById("company").value.trim();
+          const message = document.getElementById("message").value.trim();
+
+          if (!name || !email || !company || !message) {
+            formMessages.innerHTML =
+              '<div class="error-message">Please fill out all required fields.</div>';
+            return;
+          }
+
+          formMessages.innerHTML =
+            '<div class="success-message">Thank you! Your message has been received.</div>';
+          this.reset();
+        });
+    </script>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+      const menuIcon = document.querySelector(".menu-icon");
+      const navLinks = document.querySelector(".nav-links");
+      const barsIcon = menuIcon.querySelector(".fa-bars");
+      const timesIcon = menuIcon.querySelector(".fa-times");
+
+      menuIcon.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        menuIcon.classList.toggle("active");
+
+        if (navLinks.classList.contains("active")) {
+          barsIcon.style.display = "none";
+          timesIcon.style.display = "block";
+        } else {
+          barsIcon.style.display = "block";
+          timesIcon.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
