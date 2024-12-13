@@ -530,14 +530,20 @@ footer {
     transition: right var(--transition-speed);
   }
 
+  .menu-icon {
+    display: block;
+  }
+
   .nav-links.active {
     right: 0;
   }
 
+  /* Initially hide the 'fa-times' icon */
   .menu-icon .fa-times {
     display: none;
   }
 
+  /* When menu-icon has the 'active' class, hide 'fa-bars' and show 'fa-times' */
   .menu-icon.active .fa-bars {
     display: none;
   }
