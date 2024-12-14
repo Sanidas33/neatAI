@@ -193,10 +193,23 @@
     <section class="subscription-section fade-in">
       <div class="container">
         <h2>Subscribe to our newsletter for the latest updates and offers.</h2>
-        <form class="subscription-form">
-          <input type="email" placeholder="Your Email" required />
+        <form id="subscribe-form" class="subscription-form">
+          <div class="form-group">
+            <label for="subscribe-email"
+              >Email <span class="required">*</span></label
+            >
+            <input
+              type="email"
+              id="subscribe-email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
           <button type="submit" class="btn subscribe-btn">Subscribe</button>
         </form>
+        <!-- Messages -->
+        <div id="subscribe-messages" aria-live="polite"></div>
       </div>
     </section>
 
@@ -207,26 +220,12 @@
       <div class="container">
         <p>© 2024 Drinks By Neat. All rights reserved.</p>
         <ul class="footer-links">
-          <ul class="nav-links" aria-hidden="true">
-            <li>
-              <a href="privacy-policy.html">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="about/index.html">About Us</a>
-            </li>
-            <li>
-              <a href="blog/index.html">Blog</a>
-            </li>
-            <li>
-              <a href="contact/index.html">Contact Us</a>
-            </li>
-            <li>
-              <a href="services/index.html">Services</a>
-            </li>
-            <li>
-              <a href="ai-services/index.html">AI Services</a>
-            </li>
-          </ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="about/index.html">About Us</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="contact/index.html">Contact Us</a></li>
+          <li><a href="services/index.html">Services</a></li>
+          <li><a href="ai-services/index.html">AI Services</a></li>
         </ul>
         <div class="social-links">
           <a

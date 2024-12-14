@@ -101,8 +101,8 @@
               margin-top: 10px;
             "
           >
-            A beautifully milk-washed cocktail showcasing clarity and
-            refinement.
+            <!-- A beautifully milk-washed cocktail showcasing clarity and
+            refinement. -->
           </figcaption>
         </figure>
 
@@ -197,7 +197,7 @@
         </p>
 
         <!-- Additional Image (Optional) -->
-        <figure style="text-align: center; margin: 30px 0">
+        <!-- <figure style="text-align: center; margin: 30px 0">
           <img
             src="milk-wash-in-practice.jpg"
             alt="Milk Washing in Practice"
@@ -206,8 +206,8 @@
               border-radius: 8px;
               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             "
-          />
-          <figcaption
+          /> -->
+          <!-- <figcaption
             style="
               font-size: 0.9rem;
               color: var(--text-color);
@@ -216,9 +216,9 @@
           >
             Milk Washing in Practice: Fruit Loop Infused Mary Pickford.
           </figcaption>
-        </figure>
+        </figure> -->
 
-        <h2>Milk Washing in Practice: Fruit Loop Infused Mary Pickford</h2>
+        </p><h2>Milk Washing in Practice: Fruit Loop Infused Mary Pickford</h2>
         <p>
           This recipe demonstrates both milk infusion and milk washing
           techniques for a uniquely textured and visually appealing cocktail.
@@ -287,12 +287,26 @@
     <section class="subscription-section fade-in">
       <div class="container">
         <h2>Subscribe to our newsletter for the latest updates and offers.</h2>
-        <form class="subscription-form">
-          <input type="email" placeholder="Your Email" required />
+        <form id="subscribe-form" class="subscription-form">
+          <div class="form-group">
+            <label for="subscribe-email"
+              >Email <span class="required">*</span></label
+            >
+            <input
+              type="email"
+              id="subscribe-email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
           <button type="submit" class="btn subscribe-btn">Subscribe</button>
         </form>
+        <!-- Messages -->
+        <div id="subscribe-messages" aria-live="polite"></div>
       </div>
     </section>
+
 
     <!-- ==============================================
          FOOTER
@@ -302,21 +316,21 @@
         <p>© 2024 Drinks By Neat. All rights reserved.</p>
         <ul class="footer-links">
           <ul class="nav-links" aria-hidden="true">
-            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
             <li>
-              <a href="../about/index.html">About Us</a>
+              <a href="../../about/index.html">About Us</a>
             </li>
             <li>
-              <a href="../blog/index.html">Blog</a>
+              <a href="../../blog/index.html">Blog</a>
             </li>
             <li>
-              <a href="../contact/index.html">Contact Us</a>
+              <a href="../../contact/index.html">Contact Us</a>
             </li>
             <li>
-              <a href="../services/index.html">Services</a>
+              <a href="../../services/index.html">Services</a>
             </li>
             <li>
-              <a href="../ai-services/index.html">AI Services</a>
+              <a href="../../ai-services/index.html">AI Services</a>
             </li>
           </ul>
         </ul>
@@ -354,11 +368,11 @@
     </footer>
 
         <!-- Subscribe to our blog button -->
-        <div style="margin-top: 20px; text-align: center">
+        <!-- <div style="margin-top: 20px; text-align: center">
           <a href="../../contact/index.html" class="btn primary-btn"
             >Subscribe to Our Blog</a
           >
-        </div>
+        </div> -->
       </div>
     </footer>
 

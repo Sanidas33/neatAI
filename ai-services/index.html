@@ -282,10 +282,23 @@
     <section class="subscription-section fade-in">
       <div class="container">
         <h2>Subscribe to our newsletter for the latest updates and offers.</h2>
-        <form class="subscription-form">
-          <input type="email" placeholder="Your Email" required />
+        <form id="subscribe-form" class="subscription-form">
+          <div class="form-group">
+            <label for="subscribe-email"
+              >Email <span class="required">*</span></label
+            >
+            <input
+              type="email"
+              id="subscribe-email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
           <button type="submit" class="btn subscribe-btn">Subscribe</button>
         </form>
+        <!-- Messages -->
+        <div id="subscribe-messages" aria-live="polite"></div>
       </div>
     </section>
 

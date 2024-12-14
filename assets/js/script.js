@@ -167,41 +167,92 @@ if (testimonial) {
 }
 
 // ==============================================
-// 7. FORM SUBMISSION HANDLING
+// 7. SUBSCRIPTION FORM HANDLING WITH MAKE.COM
 // ==============================================
 
-const subscriptionForm = document.querySelector(".subscription-form");
-if (subscriptionForm) {
-  const subscriptionMessage = document.createElement("p");
-  subscriptionMessage.id = "subscription-message";
-  subscriptionMessage.style.display = "none";
-  subscriptionMessage.style.marginTop = "10px";
-  subscriptionForm.parentNode.appendChild(subscriptionMessage);
+// Select the subscription form and messages div
+const subscribeForm = document.getElementById("subscribe-form");
+const subscribeMessages = document.getElementById("subscribe-messages");
 
-  subscriptionForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const emailInput = subscriptionForm.querySelector('input[type="email"]');
+if (subscribeForm && subscribeMessages) {
+  subscribeForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Disable the submit button to prevent multiple submissions
+    const subscribeButton = this.querySelector("button[type='submit']");
+    subscribeButton.disabled = true;
+
+    // Clear previous messages
+    subscribeMessages.innerHTML = "";
+
+    // Collect form data
+    const emailInput = document.getElementById("subscribe-email");
     const email = emailInput.value.trim();
-    subscriptionMessage.style.display = "block";
 
-    if (validateEmail(email)) {
-      // Placeholder for AJAX request to handle the subscription
-      // Example: You can integrate with Mailchimp or a custom backend API
-      // For demonstration, we'll simulate a successful subscription with a timeout
-      subscriptionMessage.textContent = "Thank you for subscribing!";
-      subscriptionMessage.style.color = "var(--accent-color)";
-
-      // Simulate server processing delay
-      setTimeout(() => {
-        subscriptionMessage.style.display = "none";
-        subscriptionForm.reset();
-      }, 3000);
-    } else {
-      subscriptionMessage.textContent = "Please enter a valid email address.";
-      subscriptionMessage.style.color = "red";
+    // Basic validation
+    if (!email) {
+      subscribeMessages.innerHTML =
+        '<div class="error-message">Please enter your email address.</div>';
+      subscribeButton.disabled = false;
+      return;
     }
+
+    // Validate email format
+    if (!validateEmail(email)) {
+      subscribeMessages.innerHTML =
+        '<div class="error-message">Please enter a valid email address.</div>';
+      subscribeButton.disabled = false;
+      return;
+    }
+
+    // Prepare data to send
+    const data = {
+      email: email,
+      // Uncomment and set your secret token if implementing secret token verification
+      // token: "YOUR_SECRET_TOKEN",
+      // Uncomment and include captcha response if implementing CAPTCHA
+      // captcha: grecaptcha.getResponse(),
+    };
+
+    // Show loading indicator
+    subscribeMessages.innerHTML =
+      '<div class="loading-message">Subscribing...</div>';
+
+    // Send data to Make.com Webhook
+    fetch("https://hook.us2.make.com/hp6gzxwweqxbtjbjtvq2d84pz4k6q95q", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // If the response is OK (status code 200-299)
+          return;
+        }
+        // If the response is not OK, throw an error to trigger the catch block
+        throw new Error("Network response was not ok.");
+      })
+      .then(() => {
+        // Display success message
+        subscribeMessages.innerHTML =
+          '<div class="success-message">Thank you for subscribing!</div>';
+        subscribeForm.reset(); // Reset the form fields
+        subscribeButton.disabled = false; // Re-enable the submit button
+      })
+      .catch(() => {
+        // Display error message
+        subscribeMessages.innerHTML =
+          '<div class="error-message">Oops! Something went wrong. Please try again later.</div>';
+        subscribeButton.disabled = false; // Re-enable the submit button
+      });
   });
 }
+
+// ==============================================
+// 8. EMAIL VALIDATION FUNCTION
+// ==============================================
 
 // Simple Email Validation Function
 function validateEmail(email) {
@@ -211,7 +262,7 @@ function validateEmail(email) {
 }
 
 // ==============================================
-// 8. FADE-IN ANIMATIONS
+// 9. FADE-IN ANIMATIONS
 // ==============================================
 
 document.addEventListener("DOMContentLoaded", () => {
