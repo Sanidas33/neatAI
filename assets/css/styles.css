@@ -34,6 +34,7 @@ img {
   --background-color: #ffffff; /* White */
   --text-color: #34495e; /* Dark Slate */
   --hover-color: #1592e6; /* Blue */
+  --mobile-menu-text-color: #ffffff; /* White */
 
   /* Fonts */
   --font-primary: "Montserrat", sans-serif;
@@ -515,7 +516,6 @@ footer {
     flex-direction: column;
   }
 }
-
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
@@ -528,6 +528,7 @@ footer {
     align-items: center;
     justify-content: center;
     transition: right var(--transition-speed);
+    z-index: 999; /* Ensures the menu is above other elements */
   }
 
   .menu-icon {
@@ -552,6 +553,25 @@ footer {
     display: block;
   }
 
+  /* Navigation Links Styling */
+  .nav-links li a {
+    font-size: 1.2rem;
+    color: var(--mobile-menu-text-color); /* White */
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    transition: background-color var(--transition-speed),
+      color var(--transition-speed);
+    font-weight: 600; /* Makes text bolder for better readability */
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    background-color: var(--hover-color); /* Blue */
+    color: var(--background-color); /* White */
+  }
+
+  /* Responsive Content Containers */
   .content-container {
     flex-direction: column;
   }
