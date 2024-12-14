@@ -21,6 +21,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Optional: Include any additional meta tags or links here -->
   </head>
   <body class="contact-page">
     <!-- Header & Navigation -->
@@ -103,7 +105,7 @@
               placeholder="Your Message"
             ></textarea>
           </div>
-          <button type="submit" class="btn">Send Message</button>
+          <button type="submit" class="btn primary-btn">Send Message</button>
         </form>
       </div>
     </section>
@@ -113,24 +115,12 @@
       <div class="container">
         <p>© 2024 Drinks By Neat. All rights reserved.</p>
         <ul class="footer-links">
-          <ul class="nav-links" aria-hidden="true">
-            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-            <li>
-              <a href="../about/index.html">About Us</a>
-            </li>
-            <li>
-              <a href="../blog/index.html">Blog</a>
-            </li>
-            <li>
-              <a href="../contact/index.html">Contact Us</a>
-            </li>
-            <li>
-              <a href="../services/index.html">Services</a>
-            </li>
-            <li>
-              <a href="../ai-services/index.html">AI Services</a>
-            </li>
-          </ul>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about/index.html">About Us</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../contact/index.html">Contact Us</a></li>
+          <li><a href="../services/index.html">Services</a></li>
+          <li><a href="../ai-services/index.html">AI Services</a></li>
         </ul>
         <div class="social-links">
           <a
@@ -165,30 +155,68 @@
       </div>
     </footer>
 
-    <!-- JavaScript for Form -->
+    <!-- JavaScript for Form Submission -->
     <script>
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          const formMessages = document.getElementById("form-messages");
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contact-form");
+        const formMessages = document.getElementById("form-messages");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent the default form submission
+
+          // Clear previous messages
           formMessages.innerHTML = "";
 
+          // Collect form data
           const name = document.getElementById("name").value.trim();
           const email = document.getElementById("email").value.trim();
           const company = document.getElementById("company").value.trim();
           const message = document.getElementById("message").value.trim();
 
+          // Basic validation (optional, already handled by HTML5)
           if (!name || !email || !company || !message) {
             formMessages.innerHTML =
               '<div class="error-message">Please fill out all required fields.</div>';
             return;
           }
 
-          formMessages.innerHTML =
-            '<div class="success-message">Thank you! Your message has been received.</div>';
-          this.reset();
+          // Prepare data to send
+          const data = {
+            name: name,
+            email: email,
+            company: company,
+            message: message,
+          };
+
+          // Send data to Make.com Webhook
+          fetch("https://hook.us2.make.com/pejn088su7chkka65d3rcnf6d7czprkm", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => {
+              if (response.ok) {
+                // If the response is OK (status code 200-299)
+                return;
+              }
+              // If the response is not OK, throw an error to trigger the catch block
+              throw new Error("Network response was not ok.");
+            })
+            .then(() => {
+              // Display success message
+              formMessages.innerHTML =
+                '<div class="success-message">Thank you! Your message has been sent successfully.</div>';
+              form.reset(); // Reset the form fields
+            })
+            .catch(() => {
+              // Display error message
+              formMessages.innerHTML =
+                '<div class="error-message">Oops! Something went wrong. Please try again later.</div>';
+            });
         });
+      });
     </script>
 
     <!-- JavaScript for Mobile Menu -->
