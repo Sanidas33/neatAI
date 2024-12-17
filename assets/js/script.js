@@ -299,3 +299,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// ==============================================
+// 10. SEARCH FUNCTIONALITY
+// ==============================================
+
+const searchInput = document.getElementById("search-input");
+const blogPosts = document.querySelectorAll(".blog-post");
+
+if (searchInput) {
+  searchInput.addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+
+    blogPosts.forEach((post) => {
+      const titleElement = post.querySelector(".post-text h2");
+      const excerptElement = post.querySelector(".post-excerpt");
+      const title = titleElement ? titleElement.textContent.toLowerCase() : "";
+      const excerpt = excerptElement
+        ? excerptElement.textContent.toLowerCase()
+        : "";
+
+      if (title.includes(query) || excerpt.includes(query)) {
+        post.style.display = "block";
+      } else {
+        post.style.display = "none";
+      }
+    });
+  });
+}
+
+// ==============================================
+// 11. BACK TO TOP BUTTON FUNCTIONALITY
+// ==============================================
+
+const backToTopButton = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 300) {
+    backToTopButton.style.display = "block";
+  } else {
+    backToTopButton.style.display = "none";
+  }
+});
+
+backToTopButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});

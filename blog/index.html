@@ -77,104 +77,86 @@
     </section>
 
     <!-- ==============================================
-         BLOG POSTS LISTING SECTION
-         (Currently no posts, placeholder text)
+         BLOG POSTS LISTING SECTION WITH SEARCH
     ============================================== -->
-    <!-- <section class="blog-posts fade-in" style="padding: 60px 20px">
+    <section class="blog-posts fade-in" style="padding: 60px 20px">
       <div class="container">
-        <h2
-          style="
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--primary-color);
-            text-align: center;
-          "
+        <!-- Search Bar -->
+        <div
+          class="blog-search"
+          style="margin-bottom: 30px; text-align: center"
         >
-          Stay Tuned for Our Latest Posts
-        </h2>
-        <p
-          style="
-            text-align: center;
-            color: var(--text-color);
-            font-size: 1rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-          "
-        >
-          We're brewing something special. Check back soon for insights on
-          beverage consulting, AI-driven solutions, mixology tips, and more!
-        </p> -->
-    <!-- Future blog posts will be added here -->
-    <article class="blog-post">
-      <div class="post-content">
-        <div class="post-image-link">
-          <a
-            href="how-to-milk-wash-a-cocktail/how-to-milk-wash-a-cocktail.html"
-          >
-            <img
-              src="how-to-milk-wash-a-cocktail/milk-wash-cocktail.jpg"
-              alt="Milk Wash Cocktail"
-              loading="lazy"
-            />
-          </a>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search blog posts..."
+            aria-label="Search Blog Posts"
+            style="
+              padding: 10px 15px;
+              width: 80%;
+              max-width: 500px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              font-size: 1rem;
+            "
+          />
         </div>
-        <div class="post-text">
-          <h2>
-            <a
-              href="how-to-milk-wash-a-cocktail/how-to-milk-wash-a-cocktail.html"
-            >
-              How to Milk Wash a Cocktail: A Guide to Clarification and
-              Refinement
-            </a>
-          </h2>
-          <p class="post-date">Published on Feb 15, 2024</p>
-          <p class="post-excerpt">
-            Learn the art and science behind milk washing cocktails to achieve
-            perfect clarity and a refined taste profile.
-          </p>
-          <a
-            href="how-to-milk-wash-a-cocktail/how-to-milk-wash-a-cocktail.html"
-            class="read-more"
-            >Read More <i class="fas fa-chevron-right"></i
-          ></a>
-        </div>
-      </div>
-    </article>
 
-    <article class="blog-post">
-      <div class="post-content">
-        <div class="post-image-link">
-          <a
-            href="mango-sticky-rice-when-dessert-inspires-cocktails/mango-sticky-rice-when-dessert-inspires-cocktails.html"
-          >
-            <img
-              src="mango-sticky-rice-when-dessert-inspires-cocktails/mango-sticky-rice-cocktail.jpg"
-              alt="Mango Sticky Rice Cocktail"
-              loading="lazy"
-            />
-          </a>
-        </div>
-        <div class="post-text">
-          <h2>
-            <a
-              href="mango-sticky-rice-when-dessert-inspires-cocktails/mango-sticky-rice-when-dessert-inspires-cocktails.html"
-            >
-              Mango Sticky Rice: When Dessert Inspires Cocktails
-            </a>
-          </h2>
-          <p class="post-date">Published on September 15, 2024</p>
-          <p class="post-excerpt">
-            Discover how a beloved Thai dessert inspired a unique cocktail that
-            blends sweet, creamy flavors with refreshing tropical notes.
-          </p>
-          <a
-            href="mango-sticky-rice-when-dessert-inspires-cocktails/mango-sticky-rice-when-dessert-inspires-cocktails.html"
-            class="read-more"
-            >Read More <i class="fas fa-chevron-right"></i
-          ></a>
-        </div>
-      </div>
-    </article>
+        <!-- Blog Posts -->
+        <article class="blog-post">
+          <div class="post-content">
+            <div class="post-image-link">
+              <a href="how-to-milk-wash-a-cocktail/how-to-milk-wash-a-cocktail.html">
+                <img
+                  src="how-to-milk-wash-a-cocktail/milk-wash-cocktail.jpg"
+                  alt="Milk Wash Cocktail"
+                  class="blog-index-image"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="post-text">
+              <h2>
+                <a href="how-to-milk-wash-a-cocktail/how-to-milk-wash-a-cocktail.html">
+                  How to Milk Wash a Cocktail: A Guide to Clarification and Refinement
+                </a>
+              </h2>
+              <p class="post-date">Published on Feb 15, 2024</p>
+              <p class="post-excerpt">
+                Learn the art and science behind milk washing cocktails to achieve perfect clarity and a refined taste profile.
+              </p>
+              <a href="how-to-milk-wash-a-cocktail/how-to-milk-wash-a-cocktail.html" class="read-more">
+                Read More <i class="fas fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <section class="blog-index">
+          <div class="container">
+            <div class="blog-post">
+              <div class="post-content">
+                <div class="post-image-link">
+                  <img
+                    src="../blog/mango-sticky-rice-when-dessert-inspires-cocktails/mango-sticky-rice-cocktail.jpg"
+                    alt="Mango Sticky Rice Cocktail"
+                    class="blog-index-image"
+                  />
+                </div>
+                <div class="post-text">
+                  <h2>
+                    <a href="../blog/mango-sticky-rice-when-dessert-inspires-cocktails/mango-sticky-rice-when-dessert-inspires-cocktails.html">
+                      Mango Sticky Rice: When Dessert Inspires Cocktails
+                    </a>
+                  </h2>
+                  <p class="post-date">September 15, 2024</p>
+                  <p class="post-excerpt">
+                    Discover how Mango Sticky Rice inspired a unique cocktail blending tropical flavors...
+                  </p>
+                  <a href="../blog/mango-sticky-rice-when-dessert-inspires-cocktails/mango-sticky-rice-when-dessert-inspires-cocktails.html" class="read-more">Read More</a>
+                </div>
+              </div>
+            </div>
     <!-- ==============================================
          SUBSCRIPTION SECTION (Same as Home Page)
     ============================================== -->
@@ -208,24 +190,12 @@
       <div class="container">
         <p>© 2024 Drinks By Neat. All rights reserved.</p>
         <ul class="footer-links">
-          <ul class="nav-links" aria-hidden="true">
-            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-            <li>
-              <a href="../about/index.html">About Us</a>
-            </li>
-            <li>
-              <a href="../blog/index.html">Blog</a>
-            </li>
-            <li>
-              <a href="../contact/index.html">Contact Us</a>
-            </li>
-            <li>
-              <a href="../services/index.html">Services</a>
-            </li>
-            <li>
-              <a href="../ai-services/index.html">AI Services</a>
-            </li>
-          </ul>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about/index.html">About Us</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../contact/index.html">Contact Us</a></li>
+          <li><a href="../services/index.html">Services</a></li>
+          <li><a href="../ai-services/index.html">AI Services</a></li>
         </ul>
         <div class="social-links">
           <a

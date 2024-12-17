@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post Sharing Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .social-share {
+        display: flex;
+        justify-content: center; /* Center the icons horizontally */
+        gap: 20px; /* Space between icons */
+        margin-top: 20px; /* Space above the sharing section */
+      }
+
+      .social-share a {
+        display: inline-flex; /* Use flexbox for vertical centering */
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #eee; /* Light gray background */
+        color: #333; /* Dark gray icon color */
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+      }
+
+      .social-share a:hover {
+        background-color: #ddd; /* Slightly darker on hover */
+        color: #000; /* Black icon on hover */
+      }
+
+      /* Specific colors for each platform */
+      .social-share .facebook:hover {
+        background-color: #1877f2;
+        color: white;
+      }
+      .social-share .twitter:hover {
+        background-color: #1da1f2;
+        color: white;
+      }
+      .social-share .linkedin:hover {
+        background-color: #0077b5;
+        color: white;
+      }
+      .social-share .whatsapp:hover {
+        background-color: #25d366;
+        color: white;
+      }
+      .social-share .email:hover {
+        background-color: #d14836;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Blog Post Title</h1>
+    <p>This is the content of my blog post. Add your content here.</p>
+
+    <div class="social-share">
+      <a
+        class="facebook"
+        href="https://www.facebook.com/sharer/sharer.php?u=[URL]"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on Facebook"
+      >
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a
+        class="twitter"
+        href="https://twitter.com/intent/tweet?url=[URL]&text=[TITLE]"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on Twitter"
+      >
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a
+        class="linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=[URL]&title=[TITLE]"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on LinkedIn"
+      >
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a
+        class="whatsapp"
+        href="whatsapp://send?text=[TITLE] [URL]"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on WhatsApp"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a
+        class="email"
+        href="mailto:?subject=[TITLE]&body=Check out this post: [URL]"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share by Email"
+      >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+
+    <script>
+      // Get the current URL and title
+      const currentUrl = encodeURIComponent(window.location.href);
+      const currentTitle = encodeURIComponent(document.title);
+
+      // Update the share links
+      const facebookLink = document.querySelector(".social-share .facebook");
+      facebookLink.href = facebookLink.href.replace("[URL]", currentUrl);
+
+      const twitterLink = document.querySelector(".social-share .twitter");
+      twitterLink.href = twitterLink.href
+        .replace("[URL]", currentUrl)
+        .replace("[TITLE]", currentTitle);
+
+      const linkedinLink = document.querySelector(".social-share .linkedin");
+      linkedinLink.href = linkedinLink.href
+        .replace("[URL]", currentUrl)
+        .replace("[TITLE]", currentTitle);
+
+      const whatsappLink = document.querySelector(".social-share .whatsapp");
+      whatsappLink.href = whatsappLink.href
+        .replace("[URL]", currentUrl)
+        .replace("[TITLE]", currentTitle);
+
+      const emailLink = document.querySelector(".social-share .email");
+      emailLink.href = emailLink.href
+        .replace("[URL]", currentUrl)
+        .replace("[TITLE]", currentTitle);
+    </script>
+  </body>
+</html>
